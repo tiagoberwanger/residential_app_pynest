@@ -1,6 +1,1 @@
 pynest-api==0.1.1
-pydantic~=1.10.13
-SQLAlchemy~=2.0.19
-uvicorn~=0.23.1
-python-dotenv~=1.0.0
-pydantic[email]
