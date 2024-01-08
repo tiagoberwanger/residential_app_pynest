@@ -7,9 +7,6 @@ from src.utils.enums import RoomEnum
 
 class Rooms(config.Base):
     __tablename__ = "rooms"
-    
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String, unique=True)
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     room_type = Column(Enum(RoomEnum), nullable=False)
