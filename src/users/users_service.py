@@ -24,7 +24,11 @@ class UsersService:
     @db_request_handler
     def get_users(self):
         return self.session.query(UsersEntity).all()
-    
+
+    @db_request_handler
+    def get_user_by_id(self, user_id: int):
+        return self.session.query(UsersEntity).filter(UsersEntity.id == user_id).first()
+
     @db_request_handler
     def delete_user(self, user_id: int):
         users = self.session.query(UsersEntity).filter(UsersEntity.id == user_id).first()

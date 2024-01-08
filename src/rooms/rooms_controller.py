@@ -12,7 +12,11 @@ class RoomsController:
     @Get("/")
     def get_rooms(self):
         return self.service.get_rooms()
-                
+
+    @Get("/{room_id}")
+    def get_room_by_id(self, room_id: int):
+        return self.service.get_room_by_id(room_id)
+
     @Post("/")
     def add_room(self, room: RoomPostSchema):
         return self.service.add_room(room)

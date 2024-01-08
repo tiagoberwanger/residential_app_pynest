@@ -26,6 +26,10 @@ class RoomsService:
         return self.session.query(RoomsEntity).all()
 
     @db_request_handler
+    def get_room_by_id(self, room_id: int):
+        return self.session.query(RoomsEntity).filter(RoomsEntity.id == room_id).first()
+
+    @db_request_handler
     def delete_room(self, room_id: int):
         room = self.session.query(RoomsEntity).filter(RoomsEntity.id == room_id).first()
         if not room:
