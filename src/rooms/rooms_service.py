@@ -13,13 +13,13 @@ class RoomsService:
         self.session = self.config.get_db()
     
     @db_request_handler
-    def add_rooms(self, rooms: RoomPostSchema):
-        new_rooms = RoomsEntity(
-            **rooms.dict()
+    def add_room(self, room: RoomPostSchema):
+        new_room = RoomsEntity(
+            **room.dict()
         )
-        self.session.add(new_rooms)
+        self.session.add(new_room)
         self.session.commit()
-        return f'Room with id {new_rooms.id} created'
+        return f'Room with id {new_room.id} created'
 
     @db_request_handler
     def get_rooms(self):

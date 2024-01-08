@@ -13,13 +13,13 @@ class ContractsService:
         self.session = self.config.get_db()
     
     @db_request_handler
-    def add_contracts(self, contracts: ContractPostSchema):
-        new_contracts = ContractsEntity(
-            **contracts.dict()
+    def add_contract(self, contract: ContractPostSchema):
+        new_contract = ContractsEntity(
+            **contract.dict()
         )
-        self.session.add(new_contracts)
+        self.session.add(new_contract)
         self.session.commit()
-        return f'Contract with id {new_contracts.id} added'
+        return f'Contract with id {new_contract.id} added'
 
     @db_request_handler
     def get_contracts(self):

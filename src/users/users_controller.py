@@ -14,8 +14,8 @@ class UsersController:
         return self.service.get_users()
                 
     @Post("/")
-    def add_users(self, users: UsersPostSchema):
-        return self.service.add_users(users)
+    def add_user(self, user: UsersPostSchema):
+        return self.service.add_user(user)
     
     @Delete("/")
     def delete_user(self, user_id: int):

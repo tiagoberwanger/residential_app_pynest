@@ -13,13 +13,13 @@ class UsersService:
         self.session = self.config.get_db()
     
     @db_request_handler
-    def add_users(self, users: UsersPostSchema):
-        new_users = UsersEntity(
-            **users.dict()
+    def add_user(self, user: UsersPostSchema):
+        new_user = UsersEntity(
+            **user.dict()
         )
-        self.session.add(new_users)
+        self.session.add(new_user)
         self.session.commit()
-        return f'User with id {new_users.id} created'
+        return f'User with id {new_user.id} created'
 
     @db_request_handler
     def get_users(self):

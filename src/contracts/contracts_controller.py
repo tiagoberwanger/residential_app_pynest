@@ -14,8 +14,8 @@ class ContractsController:
         return self.service.get_contracts()
                 
     @Post("/")
-    def add_contracts(self, contracts: ContractPostSchema):
-        return self.service.add_contracts(contracts)
+    def add_contract(self, contract: ContractPostSchema):
+        return self.service.add_contract(contract)
  
     @Delete("/")
     def delete_contract(self, contracts_id: int):

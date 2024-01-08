@@ -14,8 +14,8 @@ class RoomsController:
         return self.service.get_rooms()
                 
     @Post("/")
-    def add_rooms(self, rooms: RoomPostSchema):
-        return self.service.add_rooms(rooms)
+    def add_room(self, room: RoomPostSchema):
+        return self.service.add_room(room)
  
     @Delete("/")
     def delete_room(self, room_id: int):
