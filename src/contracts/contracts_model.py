@@ -7,6 +7,13 @@ from src.users.users_service import UsersService
 from src.utils.enums import StatusEnum
 
 
+class ContractPutSchema(BaseModel):
+    start_date: date
+    end_date: date
+    rent_value: Decimal
+    status: StatusEnum
+
+
 class ContractPostSchema(BaseModel):
     user_id: int
     room_id: int
