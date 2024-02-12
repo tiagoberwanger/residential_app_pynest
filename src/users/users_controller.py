@@ -1,7 +1,7 @@
-from nest.core import Controller, Get, Post, Delete, Depends
+from nest.core import Controller, Get, Post, Put, Delete, Depends
 
 from .users_service import UsersService
-from .users_model import UsersPostSchema
+from .users_model import UsersPostSchema, UsersPutSchema
 
 
 @Controller("users")
@@ -20,6 +20,10 @@ class UsersController:
     @Post("/")
     def add_user(self, user: UsersPostSchema):
         return self.service.add_user(user)
+
+    @Put("/{user_id}")
+    def update_user(self, user_id: int, user: UsersPutSchema):
+        return self.service.update_user(user_id, user)
     
     @Delete("/")
     def delete_user(self, user_id: int):

@@ -14,6 +14,10 @@ class UsersPostSchema(BaseModel):
         from_attributes = True
 
 
+class UsersPutSchema(UsersPostSchema):
+    pass
+
+
 class UsersSchema(UsersPostSchema):
     id: int
     last_updated: datetime

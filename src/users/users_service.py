@@ -1,4 +1,4 @@
-from .users_model import UsersPostSchema
+from .users_model import UsersPostSchema, UsersPutSchema
 from .users_entity import Users as UsersEntity
 from config import config
 from nest.core.decorators import db_request_handler
@@ -28,6 +28,15 @@ class UsersService:
     @db_request_handler
     def get_user_by_id(self, user_id: int):
         return self.session.query(UsersEntity).filter(UsersEntity.id == user_id).first()
+
+    @db_request_handler
+    def update_user(self, user_id: int, user: UsersPutSchema):
+        users = self.session.query(UsersEntity).filter(UsersEntity.id == user_id)
+        if not users.first():
+            return f'User with id {user_id} not found'
+        users.update(user.dict())
+        self.session.commit()
+        return f'User {user_id} updated'
 
     @db_request_handler
     def delete_user(self, user_id: int):
