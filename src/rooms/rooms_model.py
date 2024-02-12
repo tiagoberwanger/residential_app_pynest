@@ -17,6 +17,10 @@ class RoomPostSchema(BaseModel):
         from_attributes = True
 
 
+class RoomPutSchema(RoomPostSchema):
+    pass
+
+
 class RoomSchema(RoomPostSchema):
     id: int
     last_updated: datetime

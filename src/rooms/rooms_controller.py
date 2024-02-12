@@ -1,4 +1,4 @@
-from nest.core import Controller, Get, Post, Delete, Depends
+from nest.core import Controller, Get, Post, Put, Delete, Depends
 
 from .rooms_service import RoomsService
 from .rooms_model import RoomPostSchema
@@ -20,6 +20,10 @@ class RoomsController:
     @Post("/")
     def add_room(self, room: RoomPostSchema):
         return self.service.add_room(room)
+
+    @Put("/{room_id}")
+    def update_room(self, room_id: int, room: RoomPostSchema):
+        return self.service.update_room(room_id, room)
  
     @Delete("/")
     def delete_room(self, room_id: int):
