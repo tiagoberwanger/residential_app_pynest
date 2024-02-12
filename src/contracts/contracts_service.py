@@ -28,9 +28,9 @@ class ContractsService:
     @db_request_handler
     def update_contract(self, contract_id: int, contract: ContractPutSchema):
         actual_contract = self.session.query(ContractsEntity).filter(ContractsEntity.id == contract_id)
-        if not actual_contract:
+        if not actual_contract.first():
             return f'Contract with id {contract_id} not found'
-        actual_contract.update({**contract.dict()})
+        actual_contract.update(contract.dict())
         self.session.commit()
         return f'Contract with id {contract_id} updated'
 
